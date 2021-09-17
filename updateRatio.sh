@@ -5,7 +5,7 @@
 	echo "Missing farmer ID"
 	exit 1
 }
-leek=$1
+farmer=$1
 
 # SQL part. Needs sqlite3
 DB=lw.db
@@ -27,10 +27,10 @@ cp /dev/null $DI
 }
 
 # Get leek names and team names
-T=$(curl -sS https://leekwars.com/api/farmer/get/$leek | jq -r '.farmer.leeks[].name,.farmer.team.name' | tr '\n' '|' | sed 's/.$//g')
+T=$(curl -sS https://leekwars.com/api/farmer/get/$farmer | jq -r '.farmer.leeks[].name,.farmer.team.name' | tr '\n' '|' | sed 's/.$//g')
 
 # Get farmer combats in memory
-curl -sS https://leekwars.com/api/history/get-farmer-history/$leek | jq .fights > fights.json
+curl -sS https://leekwars.com/api/history/get-farmer-history/$farmer | jq .fights > fights.json
 F=$(cat fights.json)
 
 # Get number of records
@@ -89,6 +89,9 @@ done
 # Injection
 echo "Updating..."
 echo ".import $DI fights" | sqlite3 lw.db 2>/dev/null
-cp /home/luc/LS/utils/lw.db /home/luc/Desktop/LS/lw.db
+
+# Export it to my win desktop for easy view with sqlite browser
+cp lw.db /home/luc/Desktop/LS/lw.db
+
 echo "Done."
 
