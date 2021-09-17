@@ -24,7 +24,7 @@ Usage: `./updateRatio FARMER_ID`
 
 You will need `sqlite3` and `jq` packages.  
 
-Each fight can result win, draw or defeat. Each fight is stored with a corresponding score of 1, 0 or -1  
+Each fight can result in a win, draw or defeat. Each fight is stored with a corresponding score of 1, 0 or -1  
 You can just filter the database with one of your leeks in leek1, and a target in leek2.
 
 Example:
@@ -44,7 +44,7 @@ sqlite> SELECT * FROM fights WHERE leek1='Turbigo' AND leek2='Terriz';
 ```
 I have 6 victories and 5 defeats against Terriz.
 
-You can also do some complex requests to get your stats per leek :  
+You can also make some complex requests to get your stats per leek :  
 `SELECT DISTINCT leek1, leek2, COUNT(leek1) as Combats, SUM(result) as Trends FROM fights WHERE (context=2 OR context = 1) AND type=0 GROUP BY leek1, leek2 ORDER BY leek1, Trends DESC, Combats;`
 
 ```
