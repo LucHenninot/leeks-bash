@@ -3,6 +3,6 @@ T10
 commands.sql
 *.json
 import.txt
-lw.db
+*.db
 .creds
 ranking
