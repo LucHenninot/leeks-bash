@@ -1,6 +1,8 @@
 T1
 T10
 commands.sql
-fights.json
+*.json
 import.txt
 lw.db
+.creds
+ranking
