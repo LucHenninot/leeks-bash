@@ -3,6 +3,12 @@
 # Import credentials & IDs
 . .creds
 
+# Or uncomment and adapt :
+#ID="FARMER NAME"
+#PASSWORD="YOUR PASSWORD"
+#id_farmer=9999999
+#id_leek=9999999
+
 # Get token
 curl -sS https://leekwars.com/api/farmer/login-token/$ID/$PASSWORD > mdp_leek.json
 token=$(cat mdp_leek.json|jq -r ".token")
