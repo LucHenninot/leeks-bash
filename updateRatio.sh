@@ -87,11 +87,12 @@ for i in $(seq 0 $((rn-1))); do
 done
 
 # Injection
-echo "Updating..."
+echo -n "Updating... "
 echo ".import $DI fights" | sqlite3 lw.db 2>/dev/null
 
 # Export it to my win desktop for easy view with sqlite browser
 cp lw.db /home/luc/Desktop/LS/lw.db
 
-echo "Done."
+echo " Done."
+echo ""
 

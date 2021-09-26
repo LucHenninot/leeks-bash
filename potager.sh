@@ -28,5 +28,5 @@ echo "SELECT DISTINCT leek1, leek2, COUNT(leek1) as Combats, SUM(result) as Tren
 
 # Disconnect
 #curl -sS -H "Accept: application/json" -H "Authorization: Bearer ${token}" -X POST https://leekwars.com/api/farmer/disconnect
-curl -sS -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer ${token}" -X POST https://leekwars.com/api/farmer/disconnect
+curl -sS -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer ${token}" -X POST https://leekwars.com/api/farmer/disconnect >/dev/null
 
