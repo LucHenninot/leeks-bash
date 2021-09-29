@@ -13,6 +13,9 @@
 curl -sS https://leekwars.com/api/farmer/login-token/$ID/$PASSWORD > mdp_leek.json
 token=$(cat mdp_leek.json|jq -r ".token")
 
+# Get my leek name
+M=$(curl -sS -H "Authorization: Bearer ${token}" -H "Content-Type: application/x-www-form-urlencoded" https://leekwars.com/api/leek/get/$id_leek | jq -r .name)
+
 # Get garden
 G=$(curl -sS -H "Authorization: Bearer ${token}" -H "Content-Type: application/x-www-form-urlencoded" https://leekwars.com/api/garden/get-leek-opponents/$id_leek | jq -r '.opponents[].name' 2>/dev/null)
 
@@ -23,7 +26,7 @@ P4=$(echo "$G" | sed -n '4p')
 P5=$(echo "$G" | sed -n '5p')
 
 
-echo -e ".width 25 25 7 5\nSELECT DISTINCT leek1, leek2, COUNT(leek1) as Combats, SUM(result) as Trend FROM fights WHERE (context=2 OR context = 1) AND type=0 AND leek2 in ('$P1', '$P2', '$P3', '$P4', '$P5') GROUP BY leek1, leek2 ORDER BY leek1, 0.5+(Trend/Combats/2) DESC, Combats DESC;" | sqlite3 -header -column -batch lw.db
+echo -e ".width 25 25 7 5\nSELECT DISTINCT leek1, leek2, COUNT(leek1) as Combats, SUM(result) as Trend FROM fights WHERE leek1 = '$M' AND (context=2 OR context = 1) AND type=0 AND leek2 in ('$P1', '$P2', '$P3', '$P4', '$P5') GROUP BY leek1, leek2 ORDER BY leek1, 0.5+(Trend/Combats/2) DESC, Combats DESC;" | sqlite3 -header -column -batch lw.db
 
 
 # Disconnect
