@@ -23,7 +23,8 @@ Collects the fights from a farmer and stores them in a sqlite database.
 Usage: `./updateRatio.sh`
 
 You can store your farmer id in a `.cred file`:
-```cat .creds
+```
+$ cat .creds
 id_farmer=XXXXX
 ```
 where `XXXXX` is your numeric farmer ID.
