@@ -40,7 +40,7 @@ rn=$(jq length fights.json)
 MID=$(echo "select max(id) from fights;" | sqlite3 lw.db)
 if [ -z "$MID" ]; then MID=0; fi
 
-echo "Got $rn records."
+echo "Got $rn fight records."
 
 # Parsing
 #for i in $(seq 0 10); do
@@ -91,8 +91,13 @@ echo -n "Updating... "
 echo ".import $DI fights" | sqlite3 lw.db 2>/dev/null
 
 # Export it to my win desktop for easy view with sqlite browser
+# Comment or remove if not needed
 cp lw.db /home/luc/Desktop/LS/lw.db
 
 echo " Done."
+
+# Count records in DB
+rec=$(echo "SELECT COUNT(leek1) FROM fights" | sqlite3 lw.db)
+echo "$rec records in database."
 echo ""
 
