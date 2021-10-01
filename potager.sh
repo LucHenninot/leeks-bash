@@ -97,7 +97,7 @@ getStats "$M" "$P5")
 
 # Filter by win%
 echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+"
-echo -e "+ You                  + Opponent             + ${BLUE}Fights${NC}   + ${GREEN}Wins${NC}     + ${YELLOW}Draws${NC}    + ${RED}Defeats${NC}  + ${GREEN}Wins %${NC}   + ${YELLOW}Draws %${NC}  + ${RED}Def. %${NC}   + Trend    +"
+echo -e "| You                  | Opponent             | ${BLUE}Fights${NC}   | ${GREEN}Wins${NC}     | ${YELLOW}Draws${NC}    | ${RED}Defeats${NC}  | ${GREEN}Wins %${NC}   | ${YELLOW}Draws %${NC}  | ${RED}Def. %${NC}   | Trend    |"
 echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+"
 echo "$tab" | sort -i -r -t '|' -k 8
 echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+"
