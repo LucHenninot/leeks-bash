@@ -63,6 +63,7 @@ for i in $(seq 0 $((rn-1))); do
 	re=$(echo "$R" | jq -r '.result')
 	if [ "$t1" == "null" ]; then t1=""; fi
 	if [ "$t2" == "null" ]; then t2=""; fi
+	if [ "$re" == '?' ]; then continue; fi			# Battle in progress
 	if [ $co -eq 5 ]; then continue; fi			# BR
 	if [ $co -eq 2 -a $ty -eq 1 ]; then continue; fi	# Farmer fight
 	if [ $co -eq 3 -a $ty -eq 1 ]; then continue; fi	# Farmer fight
