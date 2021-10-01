@@ -11,6 +11,8 @@ DB=lw.db
 DI=import.txt
 cp /dev/null $DI
 
+mkdir -p fights
+
 # Create it if needed
 [ -f $DB ] || {
 	TF='CREATE TABLE "fights" (
@@ -84,6 +86,9 @@ for i in $(seq 0 $((rn-1))); do
 
 	echo -e "$i $id : context $co type $ty winner $wi $f1 VS $f2 > $re"
 	echo "$id|$f1|$f2|$co|$ty|$re" >> $DI
+
+	# Store fight's json for future analisys
+	curl -sS https://leekwars.com/api/fight/get/$id | jq . > fights/$id.json
 done
 
 # Injection
