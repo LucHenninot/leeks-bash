@@ -20,7 +20,16 @@ Generates a `T10` directory.
 
 ## updateRatio.sh
 Collects the fights from a farmer and stores them in a sqlite database.  
-Usage: `./updateRatio FARMER_ID`  
+Usage: `./updateRatio.sh`
+
+You can store your farmer id in a `.cred file`:
+```cat .creds
+id_farmer=XXXXX
+```
+where `XXXXX` is your numeric farmer ID.
+
+Or, comment the `. .creds` line in  `updateRatio.sh` 
+and uncomment `#id_farmer=MY_FARMER_ID`
 
 You will need `sqlite3` and `jq` packages.  
 
