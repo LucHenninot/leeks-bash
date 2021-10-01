@@ -70,7 +70,7 @@ for i in $(seq 0 $((rn-1))); do
 	# Set fighters in right order: me 1st, the others 2nd
 	f1="$l1$t1"
 	f2="$l2$t2"
-	I=$(echo "$f1" | egrep -wo "Turbigo|Godzireau|Suppositoire|EnnemiPubLeek|Hanekawa")
+	I=$(echo "$f1" | egrep -wo "$T")
 	if [ -z "$I" ]; then
 		f1="$l2$t2"
 		f2="$l1$t1"
