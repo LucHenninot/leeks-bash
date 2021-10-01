@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# Checks farmer ID
-[ -z "$1" ] && {
-	echo "Missing farmer ID"
-	exit 1
-}
-farmer=$1
+# Import credentials
+. .creds
+
+# Or, uncomment the following line and set the right number
+#id_farmer=MY_FARMER_ID
 
 # SQL part. Needs sqlite3
 DB=lw.db
@@ -27,10 +26,10 @@ cp /dev/null $DI
 }
 
 # Get leek names and team names
-T=$(curl -sS https://leekwars.com/api/farmer/get/$farmer | jq -r '.farmer.leeks[].name,.farmer.team.name' | tr '\n' '|' | sed 's/.$//g')
+T=$(curl -sS https://leekwars.com/api/farmer/get/$id_farmer | jq -r '.farmer.leeks[].name,.farmer.team.name' | tr '\n' '|' | sed 's/.$//g')
 
 # Get farmer combats in memory
-curl -sS https://leekwars.com/api/history/get-farmer-history/$farmer | jq .fights > fights.json
+curl -sS https://leekwars.com/api/history/get-farmer-history/$id_farmer | jq .fights > fights.json
 F=$(cat fights.json)
 
 # Get number of records
