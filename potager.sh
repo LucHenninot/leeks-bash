@@ -77,8 +77,14 @@ function getStats() {
 		defp=$((def*100/fights))
 	}
 
+	# Truncate names if >20 chars
+	leek1=$1
+	leek2=$2
+	[ ${#leek1} -gt 20 ] && leek1=${leek1:0:20} 
+	[ ${#leek2} -gt 20 ] && leek2=${leek2:0:20} 
+
 	#echo "$1 $2 $fights $win $draw $def $winp $drawp $defp"
-	printf "| %-20s | %-20s | ${BLUE}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | %-8s |\n" $1 $2 $fights $win $draw $def $winp $drawp $defp $trend
+	printf "| %-20s | %-20s | ${BLUE}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | %-8s |\n" $leek1 $leek2 $fights $win $draw $def $winp $drawp $defp $trend
 
 }
 
