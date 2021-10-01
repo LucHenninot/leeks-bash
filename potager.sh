@@ -30,7 +30,67 @@ if [ "$P1" == "" ]; then
 	exit 1
 fi
 
-echo -e ".width 25 25 7 5\nSELECT DISTINCT leek1, leek2, COUNT(leek1) as Combats, SUM(result) as Trend FROM fights WHERE leek1 = '$M' AND (context=2 OR context = 1) AND type=0 AND leek2 in ('$P1', '$P2', '$P3', '$P4', '$P5') GROUP BY leek1, leek2 ORDER BY leek1, 0.5+(Trend/Combats/2) DESC, Combats DESC;" | sqlite3 -header -column -batch lw.db
+# Get some colors
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+BLUE='\033[1;34m'
+NC='\033[0m'		# No Color
+
+# Function to get detailed stats for a leek from the DB
+# $1: my leek name
+# $2: his leek name
+function getStats() {
+	# No leek ? exit loop
+	[ -z "$2" ] && return ""
+
+	# Get wins, draws and defeats
+	fights=0
+	win=0
+	draw=0
+	def=0
+	stats=$(echo "SELECT result FROM fights WHERE leek1='$1' AND leek2='$2';" | sqlite3 lw.db) 
+
+	# Computing stats
+	for s in $stats; do
+		[ $s -eq 1 ] && win=$((win+1))
+		[ $s -eq 0 ] && draw=$((draw+1))
+		[ $s -eq -1 ] && def=$((def+1))
+		fights=$((fights+1))
+	done
+
+	# Get %
+	winp="?"
+	drawp="?"
+	defp="?"
+
+	# If we had fights
+	[ $fights -gt 0 ] && {
+		winp=$((win*100/fights))
+		drawp=$((draw*100/fights))
+		defp=$((def*100/fights))
+	}
+
+	#echo "$1 $2 $fights $win $draw $def $winp $drawp $defp"
+	printf "| %-20s | %-20s | ${BLUE}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} |\n" $1 $2 $fights $win $draw $def $winp $drawp $defp
+
+}
+
+# Get the stats
+tab=$(getStats "$M" "$P1"
+getStats "$M" "$P2"
+getStats "$M" "$P3"
+getStats "$M" "$P4"
+getStats "$M" "$P5")
+
+# Filter by win%
+echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+"
+echo -e "+ You                  + Opponent             + ${BLUE}Fights${NC}   + ${GREEN}Wins${NC}     + ${YELLOW}Draws${NC}    + ${RED}Defeats${NC}  + ${GREEN}Wins %${NC}   + ${YELLOW}Draws %${NC}  + ${RED}Def. %${NC}   +"
+echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+"
+echo "$tab" | sort -i -r -t '|' -k 8
+echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+"
+
+# echo -e ".width 25 25 7 5\nSELECT DISTINCT leek1, leek2, COUNT(leek1) as Combats, SUM(result) as Trend FROM fights WHERE leek1 = '$M' AND (context=2 OR context = 1) AND type=0 AND leek2 in ('$P1', '$P2', '$P3', '$P4', '$P5') GROUP BY leek1, leek2 ORDER BY leek1, 0.5+(Trend/Combats/2) DESC, Combats DESC;" | sqlite3 -header -column -batch lw.db
 
 
 # Disconnect
