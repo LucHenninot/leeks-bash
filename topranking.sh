@@ -1,25 +1,21 @@
 #!/bin/bash
 
-# Need update ?
-[ "$1" != "-n" ] && {
-	# Reset the file
-	cp /dev/null ranking
-
-	# Get the 1st 2500 leeks in rank order
-	for p in $(seq 1 50); do
-		echo -n "."
-		curl -sS https://leekwars.com/api/ranking/get-active/leek/talent/$p | jq ".ranking[] | .id" >> ranking
-		sleep .2
-	done
-echo ""
+# Need a ranking file with ids
+[ -f ranking ] || {
+	echo "Please fill a file named 'ranking' with leek IDs to try. One per line"
+	exit 1
 }
 
-# Get token
+# Get token & login
 . .creds
 token=$(curl -sS https://leekwars.com/api/farmer/login-token/$ID/$PASSWORD |jq -r ".token")
 
 # Launching challenge upon each leek
 for p in $(cat ranking); do
+	# Don't try myself
+	[ $p -eq $id_leek ] && continue
+
+	# Launch challenge
 	echo -n "Trying $p > "
 	curl -sS -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer ${token}" -d "leek_id=$id_leek&target_id=$p&seed=$((RANDOM*RANDOM))" -X POST https://leekwars.com/api/garden/start-solo-challenge | jq -r .fight
 	sleep 4
