@@ -1,6 +1,6 @@
 T1
 T10
-commands.sql
+*.sql
 *.json
 import.txt
 *.db
