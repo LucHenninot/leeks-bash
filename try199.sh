@@ -38,14 +38,18 @@ curl -sS https://leekwars.com/api/ranking/get-active/leek/talent/$page | jq ".ra
 curl -sS https://leekwars.com/api/ranking/get-active/leek/talent/$((page+1)) | jq ".ranking[] | .id" >> ranking
 curl -sS https://leekwars.com/api/ranking/get-active/leek/talent/$((page+2)) | jq ".ranking[] | .id" >> ranking
 
+# Init fight counter
+c=0
+
 # Launching challenge upon each leek
 for p in $(cat ranking); do
 	# Don't try myself
 	[ $p -eq $id_leek ] && continue
 
 	# Launch try
-	echo -n "Trying $p > "
+	printf "%3d Trying $p > " $c
 	curl -sS -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer ${token}" -d "leek_id=$id_leek&target_id=$p&seed=$((RANDOM*RANDOM))" -X POST ${SITE}/api/garden/start-solo-challenge | jq -r .fight
+	c=$((c+1))
 
 	# Don't overload the LW site
         sleep 4
