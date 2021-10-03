@@ -75,7 +75,7 @@ I may defeat Competitor and Espada, but I should avoid bislpo.
 
 A much easyer way to see the results and filter the fights is to use a sqlite browser such as [DB Browser for SQLite](https://sqlitebrowser.org/).
 
-The fights are stored in a `fights` directory as compressed json fights.  
+The fights are stored in a `fights` directory as compressed json files.  
 The json filename is `fight_id.json.gz`.
 
 You can replay the fight with <https://leekwars.com/fight/fight_id>.  
