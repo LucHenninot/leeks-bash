@@ -12,7 +12,7 @@ You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 | --- | ----- |
 | [Credentials](#Credentials) | Set your login, password and IDs |
 | [updateRatio.sh](#updateRatio.sh) | Store your fights in a database for future analysis |
-| [fullMoon.sh](#fullMoon.sh> | Get the fullmoon days (UTC time) |
+| [fullMoon.sh](#fullMoon.sh) | Get the fullmoon days (UTC time) |
 
 
 ## Credentials
