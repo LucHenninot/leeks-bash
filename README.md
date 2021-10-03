@@ -92,7 +92,7 @@ Sample output:
 | Turbigo              | PtitCoeur            | 4        | 0        | 0        | 4        | 0        | 0        | 100      | -4       |
 +----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+
 ```
-This can help you decide your future opponent regarding the last fights.  
+This can help you decide your future opponent regarding the past fights.  
 The `Trend` column gives you a number between `-5` and `5`, representing the last 5 combats.  
 `-5` tells you lost all of your last 5 combats, `5` you won.
 
