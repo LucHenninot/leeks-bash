@@ -33,10 +33,10 @@ echo "My ranking page: $page"
 [ $page -eq 1 ] && page=2	# Just get down in the current page to get our 4 pages
 
 # Collect the leek IDs
-curl -sS https://leekwars.com/api/ranking/get-active/leek/talent/$((page-1)) | jq ".ranking[] | .id" > ranking
-curl -sS https://leekwars.com/api/ranking/get-active/leek/talent/$page | jq ".ranking[] | .id" >> ranking
-curl -sS https://leekwars.com/api/ranking/get-active/leek/talent/$((page+1)) | jq ".ranking[] | .id" >> ranking
-curl -sS https://leekwars.com/api/ranking/get-active/leek/talent/$((page+2)) | jq ".ranking[] | .id" >> ranking
+curl -sS ${SITE}/ranking/get-active/leek/talent/$((page-1)) | jq ".ranking[] | .id" > ranking
+curl -sS ${SITE}/ranking/get-active/leek/talent/$page | jq ".ranking[] | .id" >> ranking
+curl -sS ${SITE}/ranking/get-active/leek/talent/$((page+1)) | jq ".ranking[] | .id" >> ranking
+curl -sS ${SITE}/ranking/get-active/leek/talent/$((page+2)) | jq ".ranking[] | .id" >> ranking
 
 # Init fight counter
 c=0
@@ -48,7 +48,7 @@ for p in $(cat ranking); do
 
 	# Launch try
 	printf "%3d Trying $p > " $c
-	curl -sS -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer ${token}" -d "leek_id=$id_leek&target_id=$p&seed=$((RANDOM*RANDOM))" -X POST ${SITE}/api/garden/start-solo-challenge | jq -r .fight
+	curl -sS -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer ${token}" -d "leek_id=$id_leek&target_id=$p&seed=$((RANDOM*RANDOM))" -X POST ${SITE}/garden/start-solo-challenge | jq -r .fight
 	c=$((c+1))
 
 	# Don't overload the LW site
