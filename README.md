@@ -108,7 +108,7 @@ The `Trend` column gives you a number between `-5` and `5`, representing the las
 This script needs a [.creds file](#Credentials).
 
 It gets your ranking from the [ranking page](https://leekwars.com/ranking/active), and launches test fights againts the 199 leeks around your talent.  
-Assuming you're on talent ranking page 14: it will makes you test the leeks from page 13, 14, 15 & 16.
+Assuming you're on talent ranking page 14: it will makes you test the leeks from pages 12, 13, 14 & 15.
 
 Usefull to fill the database with [updateRatio.sh](#updateRatio.sh) and help you decide with [potager.sh](#potager.sh).
 
