@@ -12,6 +12,7 @@ You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 | --- | ----- |
 | [Credentials](#Credentials) | Set your login, password and IDs |
 | [updateRatio.sh](#updateRatio.sh) | Store your fights in a database for future analysis |
+| [potager.sh](#potager.sh) | Gives you usefull stats for your next fights in the gardener |
 | [fullMoon.sh](#fullMoon.sh) | Get the fullmoon days (UTC time) |
 
 
