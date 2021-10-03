@@ -93,16 +93,19 @@ Sample output:
 +----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+
 | You                  | Opponent             | Fights   | Wins     | Draws    | Defeats  | Wins %   | Draws %  | Def. %   | Trend    |
 +----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+
-| Turbigo              | Leek@32607           | 3        | 1        | 2        | 0        | 33       | 66       | 0        | 1        |
-| Turbigo              | ChaussetteBleue      | 6        | 2        | 3        | 1        | 33       | 50       | 16       | 1        |
-| Turbigo              | Djokavex             | 5        | 0        | 3        | 2        | 0        | 60       | 40       | -2       |
-| Turbigo              | manant               | 5        | 0        | 0        | 5        | 0        | 0        | 100      | -5       |
-| Turbigo              | PtitCoeur            | 4        | 0        | 0        | 4        | 0        | 0        | 100      | -4       |
+| JeSappelleGroot      | MiteEnPullover       | 0        | 0        | 0        | 0        | ?        | ?        | ?        | 0        |
+| JeSappelleGroot      | LeaveBrittneyAlone   | 7        | 2        | 3        | 2        | 28       | 42       | 28       | -1       |
+| JeSappelleGroot      | TaMereEnShort        | 4        | 1        | 3        | 0        | 25       | 75       | 0        | 1        |
+| JeSappelleGroot      | FeasantPlucker       | 6        | 0        | 0        | 6        | 0        | 0        | 100      | -5       |
+| JeSappelleGroot      | SergeDalaïLama       | 5        | 0        | 0        | 5        | 0        | 0        | 100      | -5       |
 +----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+
 ```
 This can help you decide your future opponent regarding the past fights.  
 The `Trend` column gives you a number between `-5` and `5`, representing the last 5 combats.  
 `-5` tells you lost all of your last 5 combats, `5` you won.
+
+`?` in stats means you've not met this opponent yet.  
+Tip: make a test fight against him and relaunch `potager.sh`.
 
 ## try199.sh
 This script needs a [.creds file](#Credentials).
