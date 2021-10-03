@@ -135,6 +135,8 @@ Running fights won't be parsed and you'll loose the result.
 Get the full moon dates and times declared in leekwars.  
 Usage: `./fullMoon.sh`
 
+**Note**: Dates & times are UTC+0.
+
 
 ## trophees1.sh
 Get the farmer names who got 1st a trophy.  
