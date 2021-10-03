@@ -6,6 +6,18 @@ You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 
 > `yum install sqlite3 jq`
 
+## Credentials
+you have to create a `.creds` file containing your farmer name & password, your farmer ID and leek ID:
+```
+$ cat .creds
+ID="FARMER_NAME"
+PASSWORD="GuessWhat"
+id_farmer=888888
+id_leek=999999
+```
+It will be used to authenticate with some API.
+
+
 ## updateRatio.sh
 Collects the fights from a farmer and stores them in a sqlite database.  
 Usage: `./updateRatio.sh`
