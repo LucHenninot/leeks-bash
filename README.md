@@ -4,7 +4,7 @@ Bash scripts for [leekwars.com](https://leekwars.com/) API
 Some of these scripts makes intensive use of [jq](https://stedolan.github.io/jq/) and [sqlite](https://www.sqlite.org/index.html).  
 You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 
-> `yum install sqlite3 jq`
+> `sudo yum install sqlite3 jq`
 
 
 ## Scripts
