@@ -121,7 +121,10 @@ If your connection is a bit slow, increase the delay but you shouldn't go under 
 **Note 3**: Keep an eye to the waiting fights in th [garden](https://leekwars.com/garden/).  
 If the waiting fights are over 20 you should stop the script.
 
-**Note 4**: (I love Notes ^^) wait all the fights has finished before updating the database with [updateRatio.sh](#updateRatio.sh).  
+**Note 4**: You're limited to 200 test fights.  
+Once the script finished you will have only on test fight remaining!
+
+**Note 5**: (I love Notes ^^) wait all the fights has finished before updating the database with [updateRatio.sh](#updateRatio.sh).  
 Running fights won't be parsed and you'll loose the result.
 
 
