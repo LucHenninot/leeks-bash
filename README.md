@@ -6,6 +6,15 @@ You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 
 > `yum install sqlite3 jq`
 
+
+## Scripts
+| Script | Description |
+| --- | ----- |
+| <#Credentials> | Set your login, password and IDs |
+| <#updateRatio.sh> | Store your fights in a database for future analysis |
+| <#fullMoon.sh> | Get the fullmoon days (UTC time) |
+
+
 ## Credentials
 you have to create a `.creds` file containing your farmer name & password, your farmer ID and leek ID:
 ```
