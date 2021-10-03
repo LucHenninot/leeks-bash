@@ -31,19 +31,10 @@ It will be used to authenticate with some API.
 Collects the fights from a farmer and stores them in a sqlite database.  
 Usage: `./updateRatio.sh`
 
-You can store your farmer id in a `.cred file`:
-```
-$ cat .creds
-id_farmer=XXXXX
-```
-where `XXXXX` is your numeric farmer ID.
+This script needs a [.creds file](#Credentials).
 
-Or, comment the `. .creds` line in  `updateRatio.sh` 
-and uncomment `#id_farmer=MY_FARMER_ID`
-
-You will need `sqlite3` and `jq` packages.  
-
-Each fight can result in a win, draw or defeat. Each fight is stored with a corresponding score of 1, 0 or -1  
+Each fight can result in a win, draw or defeat.  
+Each fight is stored with a corresponding score of 1, 0 or -1  
 You can just filter the database with one of your leeks in leek1, and a target in leek2.
 
 Example:
@@ -82,6 +73,27 @@ It tells me that I did 11 fights with Terriz, the win/defeat ratio is positive b
 I may defeat Competitor and Espada, but I should avoid bislpo.
 
 A much easyer way to see the results and filter the fights is to use a sqlite browser such as [DB Browser for SQLite](https://sqlitebrowser.org/).
+
+## potager.sh
+This script needs a [.creds file](#Credentials).
+
+It scans 5 opponents in the garden, and gives you some usefull stats from the database filled with [updateRatio.sh](#updateRatio.sh).
+
+Sample output:
+```
++----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+
+| You                  | Opponent             | Fights   | Wins     | Draws    | Defeats  | Wins %   | Draws %  | Def. %   | Trend    |
++----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+
+| Turbigo              | Leek@32607           | 3        | 1        | 2        | 0        | 33       | 66       | 0        | 1        |
+| Turbigo              | ChaussetteBleue      | 6        | 2        | 3        | 1        | 33       | 50       | 16       | 1        |
+| Turbigo              | Djokavex             | 5        | 0        | 3        | 2        | 0        | 60       | 40       | -2       |
+| Turbigo              | manant               | 5        | 0        | 0        | 5        | 0        | 0        | 100      | -5       |
+| Turbigo              | PtitCoeur            | 4        | 0        | 0        | 4        | 0        | 0        | 100      | -4       |
++----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+
+```
+This can help you decide your future opponent regarding the last fights.  
+The `Trend` column gives you a number between `-5` and `5`, representing the last 5 combats.  
+`-5` tells you lost all of your last 5 combats, `5` you won.
 
 
 ## fullMoon.sh
