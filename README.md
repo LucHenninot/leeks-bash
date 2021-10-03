@@ -1,22 +1,10 @@
 # leeks-bash
-Bash scripts for [leekwars.com](https://leekwars.com/) API
+Bash scripts for [leekwars.com](https://leekwars.com/) API  
 
-## fullMoon.sh
-Get the full moon dates and times declared in leekwars.  
-Usage: `./fullMoon.sh`
+Some of these scripts makes intensive use of [https://stedolan.github.io/jq/](jq) and [https://www.sqlite.org/index.html](sqlite).  
+You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 
-
-## trophees1.sh
-Get the farmer names who got 1st a trophy.  
-Generates a `T1` directory containing a file per farmer, and its 1st trophies.  
-In `T1` you can sort the farmers with:  
-`wc -l * | sort -n -r -k 1 | grep -vw null | head -21`
-
-
-## trophees10.sh
-Same as `trophees1.sh` but for the 10 1st achievers.  
-Generates a `T10` directory.
-
+> `yum install sqlite3 jq`
 
 ## updateRatio.sh
 Collects the fights from a farmer and stores them in a sqlite database.  
@@ -73,4 +61,22 @@ It tells me that I did 11 fights with Terriz, the win/defeat ratio is positive b
 I may defeat Competitor and Espada, but I should avoid bislpo.
 
 A much easyer way to see the results and filter the fights is to use a sqlite browser such as [DB Browser for SQLite](https://sqlitebrowser.org/).
+
+
+## fullMoon.sh
+Get the full moon dates and times declared in leekwars.  
+Usage: `./fullMoon.sh`
+
+
+## trophees1.sh
+Get the farmer names who got 1st a trophy.  
+Generates a `T1` directory containing a file per farmer, and its 1st trophies.  
+In `T1` you can sort the farmers with:  
+`wc -l * | sort -n -r -k 1 | grep -vw null | head -21`
+
+
+## trophees10.sh
+Same as `trophees1.sh` but for the 10 1st achievers.  
+Generates a `T10` directory.
+
 
