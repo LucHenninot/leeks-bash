@@ -11,8 +11,8 @@ You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 | Script | Description |
 | --- | ----- |
 | [Credentials](#Credentials) | Set your login, password and IDs |
-| <#updateRatio.sh> | Store your fights in a database for future analysis |
-| <#fullMoon.sh> | Get the fullmoon days (UTC time) |
+| [updateRatio.sh](#updateRatio.sh) | Store your fights in a database for future analysis |
+| [fullMoon.sh](#fullMoon.sh> | Get the fullmoon days (UTC time) |
 
 
 ## Credentials
