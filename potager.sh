@@ -120,7 +120,7 @@ function getStats() {
 	[ ${#leek2} -gt 14 ] && leek2=${leek2:0:14} 
 
 	#echo "$1 $2 $fights $win $draw $def $winp $drawp $defp"
-	printf "| %-20s | %-5d %-14s | ${BLUE}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | %-8s |\n" $leek1 $ra $leek2 $fights $win $draw $def $winp $drawp $defp $trend
+	printf "| %-20s | %-5d %-14s | ${BLUE}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | %4s     |\n" $leek1 $ra $leek2 $fights $win $draw $def $winp $drawp $defp $trend
 
 }
 
