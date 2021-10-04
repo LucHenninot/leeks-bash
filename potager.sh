@@ -124,6 +124,10 @@ function getStats() {
 
 }
 
+# Get my rank
+myRank=$(getRank $id_leek)
+myRank=$(printf "%-5d" $myRank)
+
 # Get the stats
 tab=$(getStats "$M" "$P1" $I1
 getStats "$M" "$P2" $I2
@@ -133,13 +137,10 @@ getStats "$M" "$P5" $I5)
 
 # Filter by win%
 echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+"
-echo -e "| You                  | Rank  Opponent       | ${BLUE}Fights${NC}   | ${GREEN}Wins${NC}     | ${YELLOW}Draws${NC}    | ${RED}Defeats${NC}  | ${GREEN}Wins %${NC}   | ${YELLOW}Draws %${NC}  | ${RED}Def. %${NC}   | Trend    |"
+echo -e "| You, rank $myRank      | Rank  Opponent       | ${BLUE}Fights${NC}   | ${GREEN}Wins${NC}     | ${YELLOW}Draws${NC}    | ${RED}Defeats${NC}  | ${GREEN}Wins %${NC}   | ${YELLOW}Draws %${NC}  | ${RED}Def. %${NC}   | Trend    |" 
 echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+"
 echo "$tab" | sort -i -r -t '|' -k 8
 echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+"
-
-# echo -e ".width 25 25 7 5\nSELECT DISTINCT leek1, leek2, COUNT(leek1) as Combats, SUM(result) as Trend FROM fights WHERE leek1 = '$M' AND (context=2 OR context = 1) AND type=0 AND leek2 in ('$P1', '$P2', '$P3', '$P4', '$P5') GROUP BY leek1, leek2 ORDER BY leek1, 0.5+(Trend/Combats/2) DESC, Combats DESC;" | sqlite3 -header -column -batch lw.db
-
 
 # Disconnect
 curl -sS -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer ${token}" -X POST ${SITE}/farmer/disconnect >/dev/null
