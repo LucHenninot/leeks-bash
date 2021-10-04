@@ -120,7 +120,7 @@ function getStats() {
 	[ ${#leek2} -gt 14 ] && leek2=${leek2:0:14} 
 
 	#echo "$1 $2 $fights $win $draw $def $winp $drawp $defp"
-	printf "| %-20s | %-5d %-14s | ${BLUE}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | %4s     |\n" $leek1 $ra $leek2 $fights $win $draw $def $winp $drawp $defp $trend
+	printf "| %-20s | %-5d %-14s | ${BLUE}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | ${GREEN}%-8s${NC} | ${YELLOW}%-8s${NC} | ${RED}%-8s${NC} | %4s  |\n" $leek1 $ra $leek2 $fights $win $draw $def $winp $drawp $defp $trend
 
 }
 
@@ -136,11 +136,11 @@ getStats "$M" "$P4" $I4
 getStats "$M" "$P5" $I5)
 
 # Filter by win%
-echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+"
-echo -e "| You, rank $myRank      | Rank  Opponent       | ${BLUE}Fights${NC}   | ${GREEN}Wins${NC}     | ${YELLOW}Draws${NC}    | ${RED}Defeats${NC}  | ${GREEN}Wins %${NC}   | ${YELLOW}Draws %${NC}  | ${RED}Def. %${NC}   | Trend    |" 
-echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+"
+echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+-------+"
+echo -e "| You, rank $myRank      | Rank  Opponent       | ${BLUE}Fights${NC}   | ${GREEN}Wins${NC}     | ${YELLOW}Draws${NC}    | ${RED}Defeats${NC}  | ${GREEN}Wins %${NC}   | ${YELLOW}Draws %${NC}  | ${RED}Def. %${NC}   | Trend |" 
+echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+-------+"
 echo "$tab" | sort -i -r -t '|' -k 8
-echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+"
+echo "+----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+-------+"
 
 # Disconnect
 curl -sS -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer ${token}" -X POST ${SITE}/farmer/disconnect >/dev/null
