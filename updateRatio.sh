@@ -44,13 +44,15 @@ if [ -z "$MID" ]; then MID=0; fi
 echo "Got $rn fight records."
 
 # Parsing
-#for i in $(seq 0 10); do
 for i in $(seq 0 $((rn-1))); do
 	# Get the record
 	R=$(echo "$F" | jq ".[$i]")
 	
 	# Get relevant fields
 	id=$(echo "$R" | jq -r '.id')
+
+	# Don't replay existing fight
+	[ -f fights/$id.json.gz ] && continue
 
 	# Exit loop if ID <= max ID
 	[ $id -le $MID ] && break
