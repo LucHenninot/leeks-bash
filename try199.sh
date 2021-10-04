@@ -44,7 +44,7 @@ c=0
 # Launching challenge upon each leek
 for p in $(cat ranking); do
 	# Don't try myself
-	[ $p -eq $id_leek ] && continue
+	# [ $p -eq $id_leek ] && continue
 
 	# Launch try
 	printf "%3d Trying $p > " $c
