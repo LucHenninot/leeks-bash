@@ -91,13 +91,13 @@ It scans 5 opponents in the garden, and gives you some useful stats from the dat
 Sample output:
 ```
 +----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+
-| You                  | Opponent             | Fights   | Wins     | Draws    | Defeats  | Wins %   | Draws %  | Def. %   | Trend    |
+| You                  | Rank Opponent        | Fights   | Wins     | Draws    | Defeats  | Wins %   | Draws %  | Def. %   | Trend    |
 +----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+
-| JeSappelleGroot      | MiteEnPullover       | 0        | 0        | 0        | 0        | ?        | ?        | ?        | 0        |
-| JeSappelleGroot      | LeaveBrittneyAlone   | 7        | 2        | 3        | 2        | 28       | 42       | 28       | -1       |
-| JeSappelleGroot      | TaMereEnShort        | 4        | 1        | 3        | 0        | 25       | 75       | 0        | 1        |
-| JeSappelleGroot      | FeasantPlucker       | 6        | 0        | 0        | 6        | 0        | 0        | 100      | -5       |
-| JeSappelleGroot      | SergeDalaïLama       | 5        | 0        | 0        | 5        | 0        | 0        | 100      | -5       |
+| JeSappelleGroot      | 1234  MiteEnPullover | 0        | 0        | 0        | 0        | ?        | ?        | ?        | 0        |
+| JeSappelleGroot      | 1254  LoveInTheAir   | 7        | 2        | 3        | 2        | 28       | 42       | 28       | -1       |
+| JeSappelleGroot      | 1247  TaMereEnShort  | 4        | 1        | 3        | 0        | 25       | 75       | 0        | 1        |
+| JeSappelleGroot      | 1250  FeasantPlucker | 6        | 0        | 0        | 6        | 0        | 0        | 100      | -5       |
+| JeSappelleGroot      | 1244  SergeDalaïLama | 5        | 0        | 0        | 5        | 0        | 0        | 100      | -5       |
 +----------------------+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+
 ```
 This can help you decide your future opponent regarding the past fights.  
