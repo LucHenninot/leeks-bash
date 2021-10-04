@@ -1,9 +1,10 @@
+.creds
 T1
 T10
 *.sql
 *.json
-import.txt
+*.txt
 *.db
-.creds
 ranking
 fights
+leeks

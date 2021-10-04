@@ -55,10 +55,20 @@ function getRank() {
 		break
 	}
 
+	# Get rank leek infos
+	rank=$(curl -sS ${SITE}/ranking/get-leek-rank-active/$1/talent | jq -r .rank)
+
 	# Get leek infos
-	leek=$(curl -sS ${SITE}/ranking/get-leek-rank-active/$1/talent | jq -r .)
-	rank=$(echo "$leek" | jq -r .rank)
+	leek=$(curl -sS ${SITE}/leek/get/$1 | jq -r .)
+	name=$(echo "$leek" | jq -r .name)
+	echo "$leek" | gzip > leeks/$name.json.gz
+
+	# Store leek infos
+	mkdir -p leeks
+
+	# Send rank
 	echo "$rank"
+
 }
 
 # Function to get detailed stats for a leek from the DB
