@@ -30,7 +30,7 @@ It will be used to authenticate with some API.
 
 
 ## updateRatio.sh
-Collects the fights from a farmer and stores them in a sqlite database.  
+Collects the fights of a leek and stores them in a database (sqlite).  
 Usage: `./updateRatio.sh`
 
 This script needs a [.creds file](#Credentials).
@@ -86,6 +86,8 @@ Or, parse the file with `zcat fight_id.json.gz | jq .`.
 ## potager.sh
 This script needs a [.creds file](#Credentials).
 
+Usage: `./potager.sh`
+
 It scans 5 opponents in the garden, and gives you some useful stats from the database filled with [updateRatio.sh](#updateRatio.sh).
 
 Sample output:
@@ -109,6 +111,8 @@ Tip: make a test fight against him and relaunch `potager.sh`.
 
 ## try199.sh
 This script needs a [.creds file](#Credentials).
+
+Usage: `./try999.sh`
 
 It gets your ranking from the [ranking page](https://leekwars.com/ranking/active), and launches test fights againts the 199 leeks around your talent.  
 Assuming you're on talent ranking page 14: it will makes you test the leeks from pages 12, 13, 14 & 15.
