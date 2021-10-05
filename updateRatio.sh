@@ -51,11 +51,15 @@ for i in $(seq 0 $((rn-1))); do
 	# Get relevant fields
 	id=$(echo "$R" | jq -r '.id')
 
-	# Don't replay existing fight
-	[ -f fights/$id.json.gz ] && continue
-
 	# Exit loop if ID <= max ID
 	[ $id -le $MID ] && break
+
+	# # Don't replay existing fight
+	# [ -f fights/$id.json.gz ] && {
+	# 	# echo "Fight $id already done."
+	# 	# continue
+	# 	toto=1
+	# }
 
 	l1=$(echo "$R" | jq -r '.leeks1[].name?')
 	l2=$(echo "$R" | jq -r '.leeks2[].name?')
@@ -86,18 +90,17 @@ for i in $(seq 0 $((rn-1))); do
 	if [ "$re" == "draw" ]; then re=0; fi
 	if [ "$re" == "win" ]; then re=1; fi
 
-	# echo -e "$i $id : context $co type $ty winner $wi $f1 VS $f2 > $re"
 	printf "%3d $id : context $co type $ty winner $wi $f1 VS $f2 > $re\n" $i
-	# echo "$id|$f1|$f2|$co|$ty|$re" >> $DI
+	echo "$id|$f1|$f2|$co|$ty|$re" >> $DI
 
 	# Store fight's json for future analysis, compressed
 	curl -sS https://leekwars.com/api/fight/get/$id | jq . > fights/$id.json
-	gzip fights/$id.json
+	[ -f fights/$id.json ] || gzip fights/$id.json
 done
 
 # Injection
 echo -n "Updating... "
-echo ".import $DI fights" | sqlite3 lw.db 2>/dev/null
+echo ".import $DI fights" | sqlite3 lw.db
 
 # Export it to my win desktop for easy view with sqlite browser
 # Comment or remove if not needed
