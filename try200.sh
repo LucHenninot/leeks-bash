@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## Get my rank, try combats against 199 closests leeks by talent (50 below my talent, 150 above).
+## Get my rank, try combats against 200 closests leeks by talent (50 below my talent, 150 above).
 ## Don't try myself (some tried, they got problems ^^).
 
 # Authent: use a .creds file :

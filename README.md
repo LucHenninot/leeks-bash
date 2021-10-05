@@ -13,7 +13,7 @@ You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 | [Credentials](#Credentials) | Set your login, password and IDs |
 | [updateRatio.sh](#updateRatio.sh) | Store your fights in a database for future analysis |
 | [potager.sh](#potager.sh) | Gives you useful stats for your next fights in the [garden](https://leekwars.com/garden/) |
-| [try199.sh](#try199.sh) | Launch test fights against your 200 talent neighbours (minus you) |
+| [try200.sh](#try200.sh) | Launch test fights against your 200 talent neighbours (including you) |
 | [fullMoon.sh](#fullMoon.sh) | Get the fullmoon days (UTC time) |
 
 
@@ -112,18 +112,18 @@ The `Trend` column gives you a number between `-5` and `5`, representing the las
 `?` in stats means you've not met this opponent yet.  
 Tip: make a test fight against him and relaunch `potager.sh`.
 
-## try199.sh
+## try200.sh
 This script needs a [.creds file](#Credentials).
 
 Usage: `./try999.sh`
 
-It gets your ranking from the [ranking page](https://leekwars.com/ranking/active), and launches test fights againts the 199 leeks around your talent.  
+It gets your ranking from the [ranking page](https://leekwars.com/ranking/active), and launches test fights againts the 200 leeks around your talent.  
 Assuming you're on talent ranking page 14: it will makes you test the leeks from pages 12, 13, 14 & 15.
 
 Useful to fill the database with [updateRatio.sh](#updateRatio.sh) and help you decide with [potager.sh](#potager.sh).
 
 **Note 1**: There is a 4s delay between each fight, to not overload the [web site](https://leekwars.com/).  
-It is **important** to launch `try199.sh` in calm hours. Not when the BR or tounraments are running!  
+It is **important** to launch `try200.sh` in calm hours. Not when the BR or tounraments are running!  
 
 **Note 2**: With a 4s delay the script needs ~15 mns.  
 If your connection is a bit slow, increase the delay but you shouldn't go under 4.
