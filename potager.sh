@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Usage:
+# ./potager.sh [leek_name]
+# If leek_name is given: get the stats for that leek.
+# If no leek_name: get the 5 next opponents in the garden
+
+leek_name=$1
+
 # Vars
 SITE="https://leekwars.com/api"
 
@@ -19,20 +26,44 @@ token=$(cat mdp_leek.json|jq -r ".token")
 # Get my leek name
 M=$(curl -sS -H "Authorization: Bearer ${token}" -H "Content-Type: application/x-www-form-urlencoded" ${SITE}/leek/get/$id_leek | jq -r .name)
 
-# Get garden
-G=$(curl -sS -H "Authorization: Bearer ${token}" -H "Content-Type: application/x-www-form-urlencoded" ${SITE}/garden/get-leek-opponents/$id_leek | jq -r '.opponents[] | [.name, .id] | @tsv' 2>/dev/null)
+# No leek name given, get the opponents in the garden
+if [ -z "$leek_name" ]; then
+	# Get garden
+	G=$(curl -sS -H "Authorization: Bearer ${token}" -H "Content-Type: application/x-www-form-urlencoded" ${SITE}/garden/get-leek-opponents/$id_leek | jq -r '.opponents[] | [.name, .id] | @tsv' 2>/dev/null)
 
-P1=$(echo "$G" | sed -n '1p' | awk '{print $1}')
-P2=$(echo "$G" | sed -n '2p' | awk '{print $1}')
-P3=$(echo "$G" | sed -n '3p' | awk '{print $1}')
-P4=$(echo "$G" | sed -n '4p' | awk '{print $1}')
-P5=$(echo "$G" | sed -n '5p' | awk '{print $1}')
+	P1=$(echo "$G" | sed -n '1p' | awk '{print $1}')
+	P2=$(echo "$G" | sed -n '2p' | awk '{print $1}')
+	P3=$(echo "$G" | sed -n '3p' | awk '{print $1}')
+	P4=$(echo "$G" | sed -n '4p' | awk '{print $1}')
+	P5=$(echo "$G" | sed -n '5p' | awk '{print $1}')
 
-I1=$(echo "$G" | sed -n '1p' | awk '{print $2}')
-I2=$(echo "$G" | sed -n '2p' | awk '{print $2}')
-I3=$(echo "$G" | sed -n '3p' | awk '{print $2}')
-I4=$(echo "$G" | sed -n '4p' | awk '{print $2}')
-I5=$(echo "$G" | sed -n '5p' | awk '{print $2}')
+	I1=$(echo "$G" | sed -n '1p' | awk '{print $2}')
+	I2=$(echo "$G" | sed -n '2p' | awk '{print $2}')
+	I3=$(echo "$G" | sed -n '3p' | awk '{print $2}')
+	I4=$(echo "$G" | sed -n '4p' | awk '{print $2}')
+	I5=$(echo "$G" | sed -n '5p' | awk '{print $2}')
+fi
+
+# leek_name given, get stats for that leek
+if [ -n "$leek_name" ]; then
+	# Do we know that leek ?
+	[ -f leeks/${leek_name}.json.gz ] || {
+		echo "No stats for $leek_name"
+		exit 1
+	}
+
+	P1=$leek_name
+	I1=$(zcat leeks/${leek_name}.json.gz | jq -r .id)
+	P2=""
+	P3=""
+	P4=""
+	P5=""
+
+	I2=""
+	I3=""
+	I4=""
+	I5=""
+fi
 
 if [ "$P1" == "" ]; then
 	echo "No stats for $M yet."
@@ -77,7 +108,7 @@ function getRank() {
 # $3: his leek id
 function getStats() {
 	# No leek ? exit loop
-	[ -z "$2" ] && return ""
+	[ -z "$2" ] && return
 
 	# Get wins, draws and defeats
 	fights=0

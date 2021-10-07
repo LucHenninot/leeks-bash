@@ -11,10 +11,10 @@ You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 | Script | Description |
 | --- | ----- |
 | [Credentials](#Credentials) | Set your login, password and IDs |
-| [updateRatio.sh](#updateRatio.sh) | Store your fights in a database for future analysis |
-| [potager.sh](#potager.sh) | Gives you useful stats for your next fights in the [garden](https://leekwars.com/garden/) |
-| [try200.sh](#try200.sh) | Launch test fights against your 200 talent neighbours (including you) |
-| [fullMoon.sh](#fullMoon.sh) | Get the fullmoon days (UTC time) |
+| [updateRatio.sh](#updateRatio%2Esh) | Store your fights in a database for future analysis |
+| [potager.sh](#potager%2Esh) | Gives you useful stats for your next fights in the [garden](https://leekwars.com/garden/) |
+| [try200.sh](#try200%2Esh) | Launch test fights against your 200 talent neighbours (including you) |
+| [fullMoon.sh](#fullMoon%2Esh) | Get the fullmoon days (UTC time) |
 
 
 ## Credentials
@@ -89,8 +89,9 @@ Or, parse the file with `zcat fight_id.json.gz | jq .`.
 ## potager.sh
 This script needs a [.creds file](#Credentials).
 
-Usage: `./potager.sh`
+Usage: `./potager.sh [leek_name]`
 
+### If no leek_name is given:
 It scans 5 opponents in the garden, and gives you some useful stats from the database filled with [updateRatio.sh](#updateRatio.sh).
 
 Sample output:
@@ -111,6 +112,9 @@ The `Trend` column gives you a number between `-5` and `5`, representing the las
 
 `?` in stats means you've not met this opponent yet.  
 Tip: make a test fight against him and relaunch `potager.sh`.
+
+### If a leek name is given:
+It displays the stats if you've already fought that leek.
 
 ## try200.sh
 This script needs a [.creds file](#Credentials).
