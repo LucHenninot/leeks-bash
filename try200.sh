@@ -33,10 +33,10 @@ echo "My ranking page: $page"
 [ $page -eq 1 ] && page=2	# Just get down in the current page to get our 4 pages
 
 # Collect the leek IDs
-curl -sS ${SITE}/ranking/get-active/leek/talent/$((page-1)) | jq ".ranking[] | .id" > ranking
+curl -sS ${SITE}/ranking/get-active/leek/talent/$((page-2)) | jq ".ranking[] | .id" > ranking
+curl -sS ${SITE}/ranking/get-active/leek/talent/$((page-1)) | jq ".ranking[] | .id" >> ranking
 curl -sS ${SITE}/ranking/get-active/leek/talent/$page | jq ".ranking[] | .id" >> ranking
 curl -sS ${SITE}/ranking/get-active/leek/talent/$((page+1)) | jq ".ranking[] | .id" >> ranking
-curl -sS ${SITE}/ranking/get-active/leek/talent/$((page+2)) | jq ".ranking[] | .id" >> ranking
 
 # Init fight counter
 c=0
