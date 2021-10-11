@@ -30,13 +30,20 @@ echo "My ranking page: $page"
 
 # You can do 200 test fights so let's pick leeks from page +1 (lower talent), current page, page -1 and page -2 (more talent)
 # Except if you're in page 1 (Hello Beewiz ^^)
-[ $page -eq 1 ] && page=2	# Just get down in the current page to get our 4 pages
+[ $page -eq 1 ] && page=3	# Just get down in the current page to get our 4 pages
+[ $page -eq 2 ] && page=3
 
-# Collect the leek IDs
-curl -sS ${SITE}/ranking/get-active/leek/talent/$((page-2)) | jq ".ranking[] | .id" > ranking
-curl -sS ${SITE}/ranking/get-active/leek/talent/$((page-1)) | jq ".ranking[] | .id" >> ranking
-curl -sS ${SITE}/ranking/get-active/leek/talent/$page | jq ".ranking[] | .id" >> ranking
-curl -sS ${SITE}/ranking/get-active/leek/talent/$((page+1)) | jq ".ranking[] | .id" >> ranking
+# Collect the leek IDs if no args
+[ -z "$1" ] && {
+	curl -sS ${SITE}/ranking/get-active/leek/talent/$((page-2)) | jq ".ranking[] | .id" > ranking
+	curl -sS ${SITE}/ranking/get-active/leek/talent/$((page-1)) | jq ".ranking[] | .id" >> ranking
+	curl -sS ${SITE}/ranking/get-active/leek/talent/$page | jq ".ranking[] | .id" >> ranking
+	curl -sS ${SITE}/ranking/get-active/leek/talent/$((page+1)) | jq ".ranking[] | .id" >> ranking
+}
+
+[ -n "$1" ] && {
+	curl -sS ${SITE}/ranking/get-active/leek/talent/$1 | jq ".ranking[] | .id" > ranking
+}
 
 # Init fight counter
 c=0

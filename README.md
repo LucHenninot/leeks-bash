@@ -119,10 +119,12 @@ It displays the stats if you've already fought that leek.
 ## try200.sh
 This script needs a [.creds file](#Credentials).
 
-Usage: `./try999.sh`
+Usage: `./try200.sh [page]`
 
 It gets your ranking from the [ranking page](https://leekwars.com/ranking/active), and launches test fights againts the 200 leeks around your talent.  
 Assuming you're on talent ranking page 14: it will makes you test the leeks from pages 12, 13, 14 & 15.
+
+Or, if a page is given: just try the 50 leeks in that page.
 
 Useful to fill the database with [updateRatio.sh](#updateRatio.sh) and help you decide with [potager.sh](#potager.sh).
 
