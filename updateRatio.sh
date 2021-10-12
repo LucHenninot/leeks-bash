@@ -95,7 +95,7 @@ for i in $(seq 0 $((rn-1))); do
 
 	# Store fight's json for future analysis, compressed
 	curl -sS https://leekwars.com/api/fight/get/$id | jq . > fights/$id.json
-	[ -f fights/$id.json ] || gzip fights/$id.json
+	gzip fights/$id.json
 done
 
 # Injection
