@@ -76,6 +76,7 @@ for i in $(seq 0 $((rn-1))); do
 	if [ $co -eq 2 -a $ty -eq 1 ]; then continue; fi	# Farmer fight
 	if [ $co -eq 3 -a $ty -eq 1 ]; then continue; fi	# Farmer fight
 	if [ $co -eq 3 -a $ty -eq 6 ]; then continue; fi	# BR ?
+	if [ $co -eq 2 -a $ty -eq 3 ]; then continue; fi	# BR garden
 
 	# Set fighters in right order: me 1st, the others 2nd
 	f1="$l1$t1"
