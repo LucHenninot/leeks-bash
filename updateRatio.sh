@@ -73,7 +73,9 @@ for i in $(seq 0 $((rn-1))); do
 	if [ "$t2" == "null" ]; then t2=""; fi
 	if [ "$re" == '?' ]; then continue; fi			# Battle in progress
 	if [ $co -eq 5 ]; then continue; fi			# BR
+	if [ $co -eq 1 -a $ty -eq 1 ]; then continue; fi	# ?
 	if [ $co -eq 2 -a $ty -eq 1 ]; then continue; fi	# Farmer fight
+	if [ $co -eq 2 -a $ty -eq 3 ]; then continue; fi	# ?
 	if [ $co -eq 3 -a $ty -eq 1 ]; then continue; fi	# Farmer fight
 	if [ $co -eq 3 -a $ty -eq 6 ]; then continue; fi	# BR ?
 	if [ $co -eq 3 -a $ty -eq 3 ]; then continue; fi	# BR ?
