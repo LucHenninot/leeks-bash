@@ -37,6 +37,8 @@ fi
 function tryLeek() {
 	echo -n "Trying $1: "
 	curl -sS -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer ${token}" -d "leek_id=$id_leek&target_id=$2&seed=$((RANDOM*RANDOM))" -X POST ${SITE}/garden/start-solo-challenge | jq -r .fight
+	# Don't overload the server
+	sleep 1
 }
 
 tryLeek $P1 $I1
