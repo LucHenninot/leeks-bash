@@ -126,7 +126,7 @@ Usage: `./tryGarden.sh`
 Which of your opponents gives you the best chance to win?
 `tryGarden.sh` will launch test fights againts your 5 opponents in the garden.  
 
-Then use [updateRatio.sh](updateRatiosh) and [potager.sh](potagersh) to update your stats and make up your choice.
+Then use [updateRatio.sh](#updateratiosh) and [potager.sh](#potagersh) to update your stats and make up your choice.
 
 ## try200.sh
 This script needs a [.creds file](#Credentials).
