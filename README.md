@@ -11,10 +11,10 @@ You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 | Script | Description |
 | --- | ----- |
 | [Credentials](#Credentials) | Set your login, password and IDs |
-| [updateRatio.sh](#updateRatio%2Esh) | Store your fights in a database for future analysis |
-| [potager.sh](#potager%2Esh) | Gives you useful stats for your next fights in the [garden](https://leekwars.com/garden/) |
-| [try200.sh](#try200%2Esh) | Launch test fights against your 200 talent neighbours (including you), or given rank page |
-| [fullMoon.sh](#fullMoon%2Esh) | Get the fullmoon days (UTC time) |
+| [updateRatio.sh](#updateRatiosh) | Store your fights in a database for future analysis |
+| [potager.sh](#potagersh) | Gives you useful stats for your next fights in the [garden](https://leekwars.com/garden/) |
+| [try200.sh](#try200sh) | Launch test fights against your 200 talent neighbours (including you), or given rank page |
+| [fullMoon.sh](#fullMoonsh) | Get the fullmoon days (UTC time) |
 
 
 ## Credentials
