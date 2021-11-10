@@ -13,6 +13,7 @@ You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 | [Credentials](#Credentials) | Set your login, password and IDs |
 | [updateRatio.sh](#updateRatiosh) | Store your fights in a database for future analysis |
 | [potager.sh](#potagersh) | Gives you useful stats for your next fights in the [garden](https://leekwars.com/garden/) |
+| [tryGarden.sh](#tryGardensh) | Launch test fights against your current garden oppenents |
 | [try200.sh](#try200sh) | Launch test fights against your 200 talent neighbours (including you), or given rank page |
 | [fullMoon.sh](#fullMoonsh) | Get the fullmoon days (UTC time) |
 
@@ -115,6 +116,17 @@ Tip: make a test fight against him and relaunch `potager.sh`.
 
 ### If a leek name is given:
 It displays the stats if you've already fought that leek.
+
+
+## tryGarden.sh
+This script needs a [.creds file](#Credentials).
+
+Usage: `./tryGarden.sh`
+
+Which of your opponents gives you the best chance to win?
+`tryGarden.sh` will launch test fights againts your 5 opponents in the garden.  
+
+Then use [updateRatio.sh](updateRatiosh) and [potager.sh](potagersh) to update your stats and make up your choice.
 
 ## try200.sh
 This script needs a [.creds file](#Credentials).
