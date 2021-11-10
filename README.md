@@ -10,12 +10,12 @@ You can install them with your package manager (`yum`, `apt-get`, `dnf`, ...).
 ## Scripts
 | Script | Description |
 | --- | ----- |
-| [Credentials](#Credentials) | Set your login, password and IDs |
-| [updateRatio.sh](#updateRatiosh) | Store your fights in a database for future analysis |
+| [Credentials](#credentials) | Set your login, password and IDs |
+| [updateRatio.sh](#updateratiosh) | Store your fights in a database for future analysis |
 | [potager.sh](#potagersh) | Gives you useful stats for your next fights in the [garden](https://leekwars.com/garden/) |
-| [tryGarden.sh](#tryGardensh) | Launch test fights against your current garden oppenents |
+| [tryGarden.sh](#trygardensh) | Launch test fights against your current garden oppenents |
 | [try200.sh](#try200sh) | Launch test fights against your 200 talent neighbours (including you), or given rank page |
-| [fullMoon.sh](#fullMoonsh) | Get the fullmoon days (UTC time) |
+| [fullMoon.sh](#fullmoonsh) | Get the fullmoon days (UTC time) |
 
 
 ## Credentials
@@ -34,7 +34,7 @@ It will be used to authenticate with some API.
 Collects the fights of a leek and stores them in a database (sqlite).  
 Usage: `./updateRatio.sh`
 
-This script needs a [.creds file](#Credentials).
+This script needs a [.creds file](#credentials).
 
 Each fight can result in a win, draw or defeat.  
 Each fight is stored with a corresponding score of 1, 0 or -1  
@@ -88,12 +88,12 @@ Or, parse the file with `zcat fight_id.json.gz | jq .`.
 
 
 ## potager.sh
-This script needs a [.creds file](#Credentials).
+This script needs a [.creds file](#credentials).
 
 Usage: `./potager.sh [leek_name]`
 
 ### If no leek_name is given:
-It scans 5 opponents in the garden, and gives you some useful stats from the database filled with [updateRatio.sh](#updateRatio.sh).
+It scans 5 opponents in the garden, and gives you some useful stats from the database filled with [updateRatio.sh](#updateratiosh).
 
 Sample output:
 ```
@@ -119,7 +119,7 @@ It displays the stats if you've already fought that leek.
 
 
 ## tryGarden.sh
-This script needs a [.creds file](#Credentials).
+This script needs a [.creds file](#credentials).
 
 Usage: `./tryGarden.sh`
 
@@ -129,7 +129,7 @@ Which of your opponents gives you the best chance to win?
 Then use [updateRatio.sh](#updateratiosh) and [potager.sh](#potagersh) to update your stats and make up your choice.
 
 ## try200.sh
-This script needs a [.creds file](#Credentials).
+This script needs a [.creds file](#credentials).
 
 Usage: `./try200.sh [page]`
 
@@ -138,7 +138,7 @@ Assuming you're on talent ranking page 14: it will makes you test the leeks from
 
 Or, if a page is given: just try the 50 leeks in that page.
 
-Useful to fill the database with [updateRatio.sh](#updateRatio.sh) and help you decide with [potager.sh](#potager.sh).
+Useful to fill the database with [updateRatio.sh](#updateratiosh) and help you decide with [potager.sh](#potager.sh).
 
 **Note 1**: There is a 4s delay between each fight, to not overload the [web site](https://leekwars.com/).  
 It is **important** to launch `try200.sh` in calm hours. Not when the BR or tounraments are running!  
@@ -152,7 +152,7 @@ If the waiting fights are over 20 you should stop the script.
 **Note 4**: You're limited to 200 test fights.  
 Once the script finished you will have only on test fight remaining!
 
-**Note 5**: (I love Notes ^^) wait all the fights has finished before updating the database with [updateRatio.sh](#updateRatio.sh).  
+**Note 5**: (I love Notes ^^) wait all the fights has finished before updating the database with [updateRatio.sh](#updateratiosh).  
 Running fights won't be parsed and you'll loose the result.
 
 
